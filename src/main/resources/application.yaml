@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: auth-biv-service
+  jpa:
+    hibernate:
+        show_sql: true
+        ddl-auto: create
+
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/user_db
+
+
+token:
+  availableAttempts: 3
+  expirationDuration: 15
+  retryInterval: 1
