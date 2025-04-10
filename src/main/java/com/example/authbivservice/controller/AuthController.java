@@ -22,7 +22,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public Status login(@RequestBody TokenDto tokenDto) {
-
         return userService.login(tokenDto);
 
     }
