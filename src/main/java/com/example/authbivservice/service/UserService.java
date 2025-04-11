@@ -1,11 +1,10 @@
 package com.example.authbivservice.service;
 
-import com.example.authbivservice.domen.dto.AuthDto;
 import com.example.authbivservice.domen.entity.User;
 
 public interface UserService {
 
-    User findByNumber(AuthDto authDto);
-    User findByEmail(AuthDto authDto);
+    User findByNumber(String number);
+    User findByEmail(String email);
 
 }

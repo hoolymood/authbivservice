@@ -13,19 +13,20 @@ import org.springframework.stereotype.Service;
 public class TokenServiceImpl implements TokenService {
 
     private final TokenRepo tokenRepo;
+    private final TokenGenerator tokenGenerator;
 
     @Override
     public Token create(User user) {
 
         Token token = new Token();
         token.setUser(user);
-        token.setCode(generate());
+        token.setCode(tokenGenerator.generate());
 
-        return tokenRepo.save(token);
+        return save(token);
     }
 
     @Override
-    public Token find(String code) {
+    public Token findByCode(String code) {
         return tokenRepo.findByCode(code)
                 .orElseThrow(
                         () -> new TokenNotFoundException(
@@ -33,8 +34,7 @@ public class TokenServiceImpl implements TokenService {
                         ));
     }
 
-    private String generate() {
-        int randomCode = (int) ((Math.random() * (999999 - 100000)) + 100000);
-        return String.valueOf(randomCode);
+    public Token save(Token token) {
+        return tokenRepo.save(token);
     }
 }

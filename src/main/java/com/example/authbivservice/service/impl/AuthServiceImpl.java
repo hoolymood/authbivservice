@@ -2,10 +2,10 @@ package com.example.authbivservice.service.impl;
 
 import com.example.authbivservice.config.TokenProperties;
 import com.example.authbivservice.domen.Status;
-import com.example.authbivservice.domen.TypeAuth;
 import com.example.authbivservice.domen.dto.AuthAResultDto;
-import com.example.authbivservice.domen.dto.AuthDto;
 import com.example.authbivservice.domen.dto.TokenDto;
+import com.example.authbivservice.domen.dto.request.AuthEmailDto;
+import com.example.authbivservice.domen.dto.request.AuthNumberDto;
 import com.example.authbivservice.domen.entity.Attempt;
 import com.example.authbivservice.domen.entity.Token;
 import com.example.authbivservice.domen.entity.User;
@@ -29,25 +29,27 @@ public class AuthServiceImpl implements AuthService {
     private final TokenService tokenService;
     private final TokenProperties tokenProperties;
 
+
     @Override
-    public TokenDto auth(AuthDto authDto) {
+    public TokenDto authByEmail(AuthEmailDto authDto) {
 
-        User user = new User();
-
-        if (authDto.typeAuth() == TypeAuth.EMAIL) {
-            user = userService.findByEmail(authDto);
-        } else if (authDto.typeAuth() == TypeAuth.PHONE)
-            user = userService.findByNumber(authDto);
-
-        Token token = tokenService.create(user);
-        return new TokenDto(token.getCode());
+        User user = userService.findByEmail(authDto.email());
+        return new TokenDto(tokenService.create(user).getCode());
     }
+
+    @Override
+    public TokenDto authByNumber(AuthNumberDto authDto) {
+
+        User user = userService.findByNumber(authDto.number());
+        return new TokenDto(tokenService.create(user).getCode());
+    }
+
 
     @Override
     @Transactional
     public AuthAResultDto login(TokenDto tokenDto) {
 
-        Token token = tokenService.find(tokenDto.code());
+        Token token = tokenService.findByCode(tokenDto.code());
 
         LocalDateTime since = LocalDateTime.now().minusMinutes(tokenProperties.getRetryInterval());
         long countOfAttempts = attemptService.countByAfter(since, token.getId());

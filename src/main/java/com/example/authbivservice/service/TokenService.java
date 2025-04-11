@@ -6,5 +6,5 @@ import com.example.authbivservice.domen.entity.User;
 public interface TokenService {
 
     Token create(User user);
-    Token find(String code);
+    Token findByCode(String code);
 }
