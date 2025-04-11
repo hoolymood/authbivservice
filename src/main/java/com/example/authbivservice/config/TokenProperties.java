@@ -9,6 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "token")
 public class TokenProperties {
     private int availableAttempts;
-    private int expirationDuration;
+    private int tokenLifeTime;
     private int retryInterval;
 }

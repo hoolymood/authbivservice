@@ -3,6 +3,7 @@ package com.example.authbivservice.service.impl;
 import com.example.authbivservice.config.TokenProperties;
 import com.example.authbivservice.domen.Status;
 import com.example.authbivservice.domen.TypeAuth;
+import com.example.authbivservice.domen.dto.AuthAResultDto;
 import com.example.authbivservice.domen.dto.AuthDto;
 import com.example.authbivservice.domen.dto.TokenDto;
 import com.example.authbivservice.domen.entity.Attempt;
@@ -28,7 +29,6 @@ public class AuthServiceImpl implements AuthService {
     private final TokenService tokenService;
     private final TokenProperties tokenProperties;
 
-
     @Override
     public TokenDto auth(AuthDto authDto) {
 
@@ -43,10 +43,9 @@ public class AuthServiceImpl implements AuthService {
         return new TokenDto(token.getCode());
     }
 
-
     @Override
     @Transactional
-    public Status login(TokenDto tokenDto) {
+    public AuthAResultDto login(TokenDto tokenDto) {
 
         Token token = tokenService.find(tokenDto.code());
 
@@ -56,18 +55,14 @@ public class AuthServiceImpl implements AuthService {
         if (countOfAttempts >= tokenProperties.getAvailableAttempts())
             throw new AttemptLimitException(String.format("Attempt limit exceeded (%d). Please try again later.", countOfAttempts));
 
-
         Attempt attempt = new Attempt();
         attempt.setToken(token);
 
-        if (token.getCreatedAt().isAfter(LocalDateTime.now().minusMinutes(tokenProperties.getExpirationDuration()))) {
+        if (token.getCreatedAt().isAfter(LocalDateTime.now().minusMinutes(tokenProperties.getTokenLifeTime()))) {
             attempt.setStatus(Status.SUCCESS);
-        } else {
-            attempt.setStatus(Status.FAILED);
-        }
+        } else attempt.setStatus(Status.FAILED);
 
         Attempt attemptSaved = attemptService.save(attempt);
-
-        return attemptSaved.getStatus();
+        return new AuthAResultDto(attemptSaved.getStatus());
     }
 }

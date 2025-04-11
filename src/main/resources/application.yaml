@@ -9,18 +9,13 @@ spring:
         show_sql: true
         ddl_auto: none
 
-
-
-  #  database-platform: org.hibernate.dialect.PostgreSQLDialect
-
   datasource:
     driverClassName: org.postgresql.Driver
     username: postgres
     password: postgres
     url: jdbc:postgresql://localhost:5432/user_db
 
-
 token:
   availableAttempts: 2
-  expirationDuration: 2
+  tokenLifeTime: 2
   retryInterval: 1

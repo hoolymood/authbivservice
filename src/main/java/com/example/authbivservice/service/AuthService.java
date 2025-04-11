@@ -1,6 +1,6 @@
 package com.example.authbivservice.service;
 
-import com.example.authbivservice.domen.Status;
+import com.example.authbivservice.domen.dto.AuthAResultDto;
 import com.example.authbivservice.domen.dto.AuthDto;
 import com.example.authbivservice.domen.dto.TokenDto;
 import org.springframework.stereotype.Service;
@@ -9,5 +9,5 @@ import org.springframework.stereotype.Service;
 public interface AuthService {
 
     TokenDto auth(AuthDto authDto);
-    Status login(TokenDto tokenDto);
+    AuthAResultDto login(TokenDto tokenDto);
 }
