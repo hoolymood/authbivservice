@@ -21,6 +21,7 @@ public class TokenServiceImpl implements TokenService {
         token.setUser(user);
         token.setCode(generate());
 
+
         return tokenRepo.save(token);
     }
 

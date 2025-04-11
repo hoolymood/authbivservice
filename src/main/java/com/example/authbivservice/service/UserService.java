@@ -7,8 +7,7 @@ import com.example.authbivservice.domen.entity.User;
 
 public interface UserService {
 
-    TokenDto auth(AuthDto authDto);
     User findByNumber(AuthDto authDto);
     User findByEmail(AuthDto authDto);
-    Status login(TokenDto tokenDto);
+
 }

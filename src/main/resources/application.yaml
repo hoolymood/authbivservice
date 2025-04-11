@@ -1,12 +1,17 @@
 spring:
   application:
     name: auth-biv-service
+
+  liquibase:
+    change-log: db.changelog/db.changelog-master.yaml
   jpa:
     hibernate:
         show_sql: true
-        ddl-auto: create
+        ddl_auto: none
 
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+  #  database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   datasource:
     driverClassName: org.postgresql.Driver
@@ -16,6 +21,6 @@ spring:
 
 
 token:
-  availableAttempts: 3
-  expirationDuration: 15
+  availableAttempts: 2
+  expirationDuration: 2
   retryInterval: 1

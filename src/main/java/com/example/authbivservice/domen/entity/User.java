@@ -41,6 +41,4 @@ public class User {
     @OneToMany (mappedBy = "user",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Token> tokens;
 
-    @OneToMany (mappedBy = "user",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List <Attempt> attempts;
 }
