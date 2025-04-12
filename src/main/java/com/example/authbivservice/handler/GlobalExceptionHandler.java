@@ -2,6 +2,7 @@ package com.example.authbivservice.handler;
 
 import com.example.authbivservice.handler.exception.AttemptLimitException;
 import com.example.authbivservice.handler.exception.AttemptNotFoundException;
+import com.example.authbivservice.handler.exception.ConflictCodeException;
 import com.example.authbivservice.handler.exception.TokenNotFoundException;
 import com.example.authbivservice.handler.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,15 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(e.getMessage());
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<String> conflictCodeException(ConflictCodeException e) {
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(e.getMessage());
     }

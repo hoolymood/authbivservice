@@ -28,7 +28,8 @@ public class AuthController {
             description = "Авторизация по номеру",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Успешная авторизация"),
-                    @ApiResponse(responseCode = "404", description = "Пользователя с таким номером не существует", content = @Content)
+                    @ApiResponse(responseCode = "404", description = "Пользователя с таким номером не существует", content = @Content),
+                    @ApiResponse(responseCode = "409", description = "Не удалось сгенерировать код", content = @Content)
             })
     @PostMapping("/number")
     public TokenDto authByNumber(@RequestBody AuthNumberDto authDto) {
@@ -40,7 +41,8 @@ public class AuthController {
             description = "Авторизация по эмайл",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Успешная авторизация"),
-                    @ApiResponse(responseCode = "404", description = "Пользователь с таким эмайл не существует", content = @Content)
+                    @ApiResponse(responseCode = "404", description = "Пользователь с таким эмайл не существует", content = @Content),
+                    @ApiResponse(responseCode = "409", description = "Не удалось сгенерировать код", content = @Content)
             })
     @PostMapping("/email")
     public TokenDto authByEmail(@RequestBody AuthEmailDto authDto) {

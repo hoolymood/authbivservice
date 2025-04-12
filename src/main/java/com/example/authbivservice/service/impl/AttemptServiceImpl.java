@@ -36,7 +36,7 @@ public class AttemptServiceImpl implements AttemptService {
         Attempt attempt = attemptRepo.findFirstByTokenCodeAndStatusOrderByCreatedAtDesc(code, status)
                 .orElseThrow(
                         () -> new TokenNotFoundException(
-                                String.format("Attempt for %s not exist", code)
+                                String.format("Attempt for %s does not exist", code)
                         ));
 
         return new ResponseStatusDto(attempt.getStatus(), attempt.getCreatedAt());

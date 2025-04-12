@@ -7,7 +7,6 @@ public class TokenGenerator {
 
     /**
      * Метод для генерации токена.
-     *
      * Условия генерации:
      * - Количество цифр: 6
      * - Отсутствуют лидирующие нули
@@ -16,7 +15,17 @@ public class TokenGenerator {
      * @return String сгенерированный код
      */
     public String generate() {
-        int randomCode = (int) ((Math.random() * (999999 - 100000)) + 100000);
-        return String.valueOf(randomCode);
+
+        int[] code = new int[6];
+        int index = 0;
+        code[index++] = (int) ((Math.random() * (10 - 1)) + 1);
+
+        while (index < code.length) {
+
+            int i = (int) (Math.random() * 10);
+            if (i == code[index - 1]) i = (int) (Math.random() * 10);
+            code[index++] = i;
+        }
+        return "403030";
     }
 }

@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
         return userRepo.findByEmail(email)
                 .orElseThrow(
                         () -> new UserNotFoundException(
-                                String.format("User with email %s not exist", email)
+                                String.format("User with email %s does not exist", email)
                         ));
     }
 
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
         return userRepo.findByNumber(number)
                 .orElseThrow(
                         () -> new UserNotFoundException(
-                                String.format("User with number %s not exist", number)
+                                String.format("User with number %s does not exist", number)
                         ));
     }
 }

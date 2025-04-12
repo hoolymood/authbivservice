@@ -31,7 +31,6 @@ public class AuthServiceImpl implements AuthService {
     private final TokenService tokenService;
     private final TokenProperties tokenProperties;
 
-
     @Override
     public TokenDto authByEmail(AuthEmailDto authDto) {
 
@@ -45,7 +44,6 @@ public class AuthServiceImpl implements AuthService {
         User user = userService.findByNumber(authDto.number());
         return new TokenDto(tokenService.create(user).getCode());
     }
-
 
     @Override
     @Transactional

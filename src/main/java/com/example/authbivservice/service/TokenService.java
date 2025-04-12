@@ -7,4 +7,5 @@ public interface TokenService {
 
     Token create(User user);
     Token findByCode(String code);
+    Token save(Token token);
 }
