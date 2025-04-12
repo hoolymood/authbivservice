@@ -1,5 +1,6 @@
 package com.example.authbivservice.utils;
 
+import liquibase.util.StringUtil;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -26,6 +27,6 @@ public class TokenGenerator {
             if (i == code[index - 1]) i = (int) (Math.random() * 10);
             code[index++] = i;
         }
-        return "403030";
+        return StringUtil.join(code, "");
     }
 }

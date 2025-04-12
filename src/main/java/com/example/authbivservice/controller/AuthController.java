@@ -1,9 +1,9 @@
 package com.example.authbivservice.controller;
 
-import com.example.authbivservice.domen.dto.AuthResultDto;
-import com.example.authbivservice.domen.dto.TokenDto;
 import com.example.authbivservice.domen.dto.AuthEmailDto;
 import com.example.authbivservice.domen.dto.AuthNumberDto;
+import com.example.authbivservice.domen.dto.AuthResultDto;
+import com.example.authbivservice.domen.dto.TokenDto;
 import com.example.authbivservice.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

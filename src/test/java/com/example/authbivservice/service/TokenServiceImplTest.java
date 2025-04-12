@@ -2,6 +2,7 @@ package com.example.authbivservice.service;
 
 import com.example.authbivservice.domen.entity.Token;
 import com.example.authbivservice.domen.entity.User;
+import com.example.authbivservice.handler.exception.DuplicateCodeException;
 import com.example.authbivservice.handler.exception.TokenNotFoundException;
 import com.example.authbivservice.repo.TokenRepo;
 import com.example.authbivservice.service.impl.TokenServiceImpl;
@@ -45,16 +46,36 @@ class TokenServiceImplTest {
 
         //given
         User user = new User(UUID.randomUUID(), "example@mail.ru", "895542355", new ArrayList<>());
+        String code = "123456";
         Token token = new Token();
         token.setUser(user);
-        token.setCode("123456");
-        when(tokenGenerator.generate()).thenReturn("123456");
+        token.setCode(code);
+        when(tokenGenerator.generate()).thenReturn(code);
+        when(tokenRepo.findByCodeAndUserId(code, user.getId())).thenReturn(Optional.empty());
         when(tokenService.save(eq(token))).thenReturn(token);
 
         //when
         Token actual = tokenService.create(user);
 
+        //then
         Assertions.assertEquals(token, actual);
+    }
+
+    @Test
+    @DisplayName("бросает DuplicateCodeException, когда этот код уже существует")
+    void create_shouldDuplicateCodeException_whenCodeIsExist() {
+
+        //given
+        User user = new User(UUID.randomUUID(), "example@mail.ru", "895542355", new ArrayList<>());
+        String code = "123456";
+        Token token = new Token();
+        token.setUser(user);
+        token.setCode(code);
+        when(tokenGenerator.generate()).thenReturn(code);
+        when(tokenRepo.findByCodeAndUserId(code, user.getId())).thenReturn(Optional.of(token));
+
+        //then
+        Assertions.assertThrows(DuplicateCodeException.class, () -> tokenService.create(user));
     }
 
     @Test
