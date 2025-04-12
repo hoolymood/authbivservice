@@ -5,6 +5,7 @@ import com.example.authbivservice.domen.entity.User;
 import com.example.authbivservice.handler.exception.TokenNotFoundException;
 import com.example.authbivservice.repo.TokenRepo;
 import com.example.authbivservice.service.TokenService;
+import com.example.authbivservice.utils.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

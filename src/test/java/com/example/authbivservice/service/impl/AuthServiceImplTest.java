@@ -2,10 +2,10 @@ package com.example.authbivservice.service.impl;
 
 import com.example.authbivservice.config.TokenProperties;
 import com.example.authbivservice.domen.Status;
-import com.example.authbivservice.domen.dto.AuthAResultDto;
+import com.example.authbivservice.domen.dto.AuthResultDto;
 import com.example.authbivservice.domen.dto.TokenDto;
-import com.example.authbivservice.domen.dto.request.AuthEmailDto;
-import com.example.authbivservice.domen.dto.request.AuthNumberDto;
+import com.example.authbivservice.domen.dto.AuthEmailDto;
+import com.example.authbivservice.domen.dto.AuthNumberDto;
 import com.example.authbivservice.domen.entity.Attempt;
 import com.example.authbivservice.domen.entity.Token;
 import com.example.authbivservice.domen.entity.User;
@@ -118,7 +118,7 @@ class AuthServiceImplTest {
         when(attemptService.save(eq(attempt))).thenReturn(attempt);
 
         //when
-        AuthAResultDto actual = authService.login(tokenDto);
+        AuthResultDto actual = authService.login(tokenDto);
 
         //then
         Assertions.assertEquals(attempt.getStatus(), actual.status());
@@ -142,7 +142,7 @@ class AuthServiceImplTest {
         when(attemptService.save(eq(attempt))).thenReturn(attempt);
 
         //when
-        AuthAResultDto actual = authService.login(tokenDto);
+        AuthResultDto actual = authService.login(tokenDto);
 
         //then
         Assertions.assertEquals(attempt.getStatus(), actual.status());

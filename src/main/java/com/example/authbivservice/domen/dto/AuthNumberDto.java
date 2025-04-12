@@ -1,4 +1,4 @@
-package com.example.authbivservice.domen.dto.request;
+package com.example.authbivservice.domen.dto;
 
 public record AuthNumberDto(
         String number

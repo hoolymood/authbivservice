@@ -1,8 +1,8 @@
 package com.example.authbivservice.service.impl;
 
 
-import com.example.authbivservice.domen.dto.request.AuthEmailDto;
-import com.example.authbivservice.domen.dto.request.AuthNumberDto;
+import com.example.authbivservice.domen.dto.AuthEmailDto;
+import com.example.authbivservice.domen.dto.AuthNumberDto;
 import com.example.authbivservice.domen.entity.User;
 import com.example.authbivservice.handler.exception.UserNotFoundException;
 import com.example.authbivservice.repo.UserRepo;

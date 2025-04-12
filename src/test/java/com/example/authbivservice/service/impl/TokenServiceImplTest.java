@@ -4,6 +4,7 @@ import com.example.authbivservice.domen.entity.Token;
 import com.example.authbivservice.domen.entity.User;
 import com.example.authbivservice.handler.exception.TokenNotFoundException;
 import com.example.authbivservice.repo.TokenRepo;
+import com.example.authbivservice.utils.TokenGenerator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

@@ -2,10 +2,10 @@ package com.example.authbivservice.service.impl;
 
 import com.example.authbivservice.config.TokenProperties;
 import com.example.authbivservice.domen.Status;
-import com.example.authbivservice.domen.dto.AuthAResultDto;
+import com.example.authbivservice.domen.dto.AuthResultDto;
 import com.example.authbivservice.domen.dto.TokenDto;
-import com.example.authbivservice.domen.dto.request.AuthEmailDto;
-import com.example.authbivservice.domen.dto.request.AuthNumberDto;
+import com.example.authbivservice.domen.dto.AuthEmailDto;
+import com.example.authbivservice.domen.dto.AuthNumberDto;
 import com.example.authbivservice.domen.entity.Attempt;
 import com.example.authbivservice.domen.entity.Token;
 import com.example.authbivservice.domen.entity.User;
@@ -47,7 +47,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     @Transactional
-    public AuthAResultDto login(TokenDto tokenDto) {
+    public AuthResultDto login(TokenDto tokenDto) {
 
         Token token = tokenService.findByCode(tokenDto.code());
 
@@ -65,6 +65,6 @@ public class AuthServiceImpl implements AuthService {
         } else attempt.setStatus(Status.FAILED);
 
         Attempt attemptSaved = attemptService.save(attempt);
-        return new AuthAResultDto(attemptSaved.getStatus());
+        return new AuthResultDto(attemptSaved.getStatus());
     }
 }
