@@ -1,4 +1,4 @@
-package com.example.authbivservice.service.impl;
+package com.example.authbivservice.service;
 
 import com.example.authbivservice.config.TokenProperties;
 import com.example.authbivservice.domen.Status;
@@ -9,9 +9,7 @@ import com.example.authbivservice.domen.dto.AuthNumberDto;
 import com.example.authbivservice.domen.entity.Attempt;
 import com.example.authbivservice.domen.entity.Token;
 import com.example.authbivservice.domen.entity.User;
-import com.example.authbivservice.service.AttemptService;
-import com.example.authbivservice.service.TokenService;
-import com.example.authbivservice.service.UserService;
+import com.example.authbivservice.service.impl.AuthServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

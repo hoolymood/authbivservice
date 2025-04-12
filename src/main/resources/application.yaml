@@ -17,5 +17,5 @@ spring:
 
 token:
   availableAttempts: 2
-  tokenLifeTime: 2
+  tokenLifeTime: 1
   retryInterval: 1

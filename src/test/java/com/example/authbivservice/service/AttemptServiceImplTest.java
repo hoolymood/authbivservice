@@ -1,4 +1,4 @@
-package com.example.authbivservice.service.impl;
+package com.example.authbivservice.service;
 
 import com.example.authbivservice.domen.Status;
 import com.example.authbivservice.domen.dto.ResponseStatusDto;
@@ -6,6 +6,7 @@ import com.example.authbivservice.domen.entity.Attempt;
 import com.example.authbivservice.domen.entity.Token;
 import com.example.authbivservice.handler.exception.AttemptNotFoundException;
 import com.example.authbivservice.repo.AttemptRepo;
+import com.example.authbivservice.service.impl.AttemptServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

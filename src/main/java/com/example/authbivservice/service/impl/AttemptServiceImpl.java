@@ -4,6 +4,7 @@ import com.example.authbivservice.domen.Status;
 import com.example.authbivservice.domen.dto.ResponseStatusDto;
 import com.example.authbivservice.domen.entity.Attempt;
 import com.example.authbivservice.handler.exception.TokenNotFoundException;
+import com.example.authbivservice.log.Loggable;
 import com.example.authbivservice.repo.AttemptRepo;
 import com.example.authbivservice.service.AttemptService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Loggable
 public class AttemptServiceImpl implements AttemptService {
 
     private final AttemptRepo attemptRepo;

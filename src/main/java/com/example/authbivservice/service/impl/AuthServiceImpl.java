@@ -10,6 +10,7 @@ import com.example.authbivservice.domen.entity.Attempt;
 import com.example.authbivservice.domen.entity.Token;
 import com.example.authbivservice.domen.entity.User;
 import com.example.authbivservice.handler.exception.AttemptLimitException;
+import com.example.authbivservice.log.Loggable;
 import com.example.authbivservice.service.AttemptService;
 import com.example.authbivservice.service.AuthService;
 import com.example.authbivservice.service.TokenService;
@@ -22,6 +23,7 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
+@Loggable
 public class AuthServiceImpl implements AuthService {
 
     private final UserService userService;

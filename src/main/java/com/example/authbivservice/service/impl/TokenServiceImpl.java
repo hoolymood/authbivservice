@@ -3,6 +3,7 @@ package com.example.authbivservice.service.impl;
 import com.example.authbivservice.domen.entity.Token;
 import com.example.authbivservice.domen.entity.User;
 import com.example.authbivservice.handler.exception.TokenNotFoundException;
+import com.example.authbivservice.log.Loggable;
 import com.example.authbivservice.repo.TokenRepo;
 import com.example.authbivservice.service.TokenService;
 import com.example.authbivservice.utils.TokenGenerator;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Loggable
 public class TokenServiceImpl implements TokenService {
 
     private final TokenRepo tokenRepo;

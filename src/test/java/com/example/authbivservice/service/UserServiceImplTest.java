@@ -1,4 +1,4 @@
-package com.example.authbivservice.service.impl;
+package com.example.authbivservice.service;
 
 
 import com.example.authbivservice.domen.dto.AuthEmailDto;
@@ -6,6 +6,7 @@ import com.example.authbivservice.domen.dto.AuthNumberDto;
 import com.example.authbivservice.domen.entity.User;
 import com.example.authbivservice.handler.exception.UserNotFoundException;
 import com.example.authbivservice.repo.UserRepo;
+import com.example.authbivservice.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
