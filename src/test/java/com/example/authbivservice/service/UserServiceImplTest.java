@@ -38,10 +38,10 @@ class UserServiceImplTest {
     @BeforeAll
     static void setUp() {
         authEmailDto = new AuthEmailDto("example@mail.ru");
-        authNumberDto = new AuthNumberDto("7904322548");
+        authNumberDto = new AuthNumberDto("89046585026");
         expected = new User();
         expected.setEmail("example@mail.ru");
-        expected.setNumber("7904322548");
+        expected.setNumber("89046585026");
     }
 
     @AfterEach

@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +33,7 @@ public class AuthController {
                     @ApiResponse(responseCode = "409", description = "Не удалось сгенерировать код", content = @Content)
             })
     @PostMapping("/number")
-    public TokenDto authByNumber(@RequestBody AuthNumberDto authDto) {
+    public TokenDto authByNumber(@RequestBody @Valid AuthNumberDto authDto) {
         return authService.authByNumber(authDto);
     }
 
@@ -45,7 +46,7 @@ public class AuthController {
                     @ApiResponse(responseCode = "409", description = "Не удалось сгенерировать код", content = @Content)
             })
     @PostMapping("/email")
-    public TokenDto authByEmail(@RequestBody AuthEmailDto authDto) {
+    public TokenDto authByEmail(@RequestBody @Valid AuthEmailDto authDto) {
         return authService.authByEmail(authDto);
     }
 
@@ -58,7 +59,7 @@ public class AuthController {
                     @ApiResponse(responseCode = "429", description = "Слишком много запросов по токену", content = @Content)
             })
     @PostMapping("/login")
-    public AuthResultDto login(@RequestBody TokenDto tokenDto) {
+    public AuthResultDto login(@RequestBody @Valid TokenDto tokenDto) {
         return authService.login(tokenDto);
     }
 }

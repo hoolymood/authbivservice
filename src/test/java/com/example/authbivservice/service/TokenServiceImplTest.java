@@ -45,7 +45,7 @@ class TokenServiceImplTest {
     void create() {
 
         //given
-        User user = new User(UUID.randomUUID(), "example@mail.ru", "895542355", new ArrayList<>());
+        User user = new User(UUID.randomUUID(), "example@mail.ru", "89554235564", new ArrayList<>());
         String code = "123456";
         Token token = new Token();
         token.setUser(user);

@@ -18,9 +18,9 @@ mvn spring-boot:run
  С помощью Liquibase загруженны юзеры по которым можно получать токены.
 
 ```
-first@mail.ru, 78451654811    
-second@mail.ru', '78464854811    
-fhird@mail.ru', '78458524811
+first@mail.ru, 89151654811    
+second@mail.ru', '89664854811    
+fhird@mail.ru', '89058524811
 ```
 
 ##### Парметры токена
